@@ -1,4 +1,5 @@
-import Link from "next/link"
+import styles from "./links.module.css";
+import NavLink from "./navLink/navLink";
 
 const Links = () => {
 
@@ -21,16 +22,37 @@ const Links = () => {
         }
     ];
 
+    const adminLink = {
+        title: 'Admin',
+        path: '/admin'
+    };
+
+    const noUserLink = {
+        title: 'Login',
+        path: '/login'
+    }
+
+    const session = true;
+    const isAdmin = true;
+
     return (
-        <div>
+        <div className={styles.links}>
             {
                 links.map((link) => (
-                    <Link href={link.path} key={link.title}>
-                        {link.title}
-                    </Link>
+                    <NavLink item={link} key={link.title} />
                 ))
             }
-
+            {
+                session ? (
+                    <>
+                        {isAdmin && <NavLink item={adminLink} key={adminLink.title} />}
+                        <button>Logout</button>
+                    </>
+                ) :
+                    (
+                        <NavLink item={noUserLink} key={noUserLink.title} />
+                    )
+            }
         </div>
     )
 };

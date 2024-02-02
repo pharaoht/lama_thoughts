@@ -45,13 +45,15 @@ const Links = () => {
                 Menu
             </button>
             {
-                isOpen && <div className={styles.mobileLinks}>
-                    {
-                        links.map((link) => (
-                            <NavLink item={link} key={link.title} />
-                        ))
-                    }
-                </div>
+                isOpen && (
+                    <div className={styles.mobileLinks}>
+                        {
+                            links.map((link) => (
+                                <NavLink item={link} key={link.title} />
+                            ))
+                        }
+                    </div>
+                )
             }
 
         </div>

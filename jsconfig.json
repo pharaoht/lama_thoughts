@@ -9,3 +9,69 @@
 //this is so we can use @/* to import our files instead of doing ../.././ in import statement
 // ex ../../../component/page now -> @/component/page
 //@ = src folder
+
+
+
+//two types of rendering
+
+//Server Side Rendering (SSR) and Client Side Rendering (CSR)
+
+
+//Pros of SSR
+//The initial page load is faster
+//better for old devices and slow internet connection
+//better seo
+
+//cons of ssr
+//less interaction
+//increased server loads
+//slower subsequent page loads
+
+//pros of CSR
+//Better performance after intial load
+//less server load
+//best for the user interactivity
+
+//cons of csr
+//may affect seo
+//slower initial load
+//dependency on client resources
+
+
+//even if you set your component as a client, the intial render will always be on the server
+
+
+
+// <Link prefetch={false} /> 
+//^ use this if you have too many links on your page, it may cause performance issues if you dont
+
+
+//useRouter for client side redirect
+//const router = useRouter() //From next/navigation
+
+//router.push('/')
+//router.replace('/') this wont add to the history stack
+//router.refresh() this will refresh current route and make new request to the server, if you want to refresh data, this is good
+//router.back() this is for going back, like in the browser
+//router.forward() this is for opening up the next page, like in the browser
+
+//const pathName = usePathname() // to get path name of current page you are on
+
+//const query = useSearchParams() //to get parameters from url of current page you are on
+// const value = query.get('q')
+
+
+//use next.js dynamic to specifiy its a client component and you dont want ssr
+
+//<div suppressHydrationWarning>{a}</div> to dont show warning on client side
+
+//its better to keep react components server side components if you are using them to fetch data
+
+//by default next.js caches api responses for better performance 
+//if your data is always changing and need current its better to use {cache:'no-store'}. 
+//ex await fetch('url', {cache:'no-store'})
+
+
+//server actions
+//always put the "use server" directive
+//server actions always need to be async functinos whether you are doing async operations or not
